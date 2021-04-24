@@ -34,8 +34,12 @@ def blur():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+
+            factor = 0
+
             im = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            im = im.filter(ImageFilter.BLUR)
+            enhancer = ImageEnhance.Sharpness(im)
+            im = enhancer.enhance(factor)
             im.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             return send_from_directory(app.config["UPLOAD_FOLDER"], filename=filename, as_attachment=True)
@@ -65,8 +69,12 @@ def sharp():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+
+            factor = 2
+
             im = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            im = im.filter(ImageFilter.SHARPEN)
+            enhancer = ImageEnhance.Sharpness(im)
+            im = enhancer.enhance(factor)
             im.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             return send_from_directory(app.config["UPLOAD_FOLDER"], filename=filename, as_attachment=True)
@@ -130,10 +138,10 @@ def contrast():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-            factor = 1.3
+            factor = 2
 
             im = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            enhancer = ImageEnhance.Contrast(im)
+            enhancer = ImageEnhance.Color(im)
             im = enhancer.enhance(factor)
             im.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
