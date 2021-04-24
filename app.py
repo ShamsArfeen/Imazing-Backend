@@ -70,7 +70,7 @@ def sharp():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
 
-            factor = 2
+            factor = 4
 
             im = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             enhancer = ImageEnhance.Sharpness(im)
