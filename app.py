@@ -209,7 +209,7 @@ def rightrotate():
 
 
             im = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            im  = im.transpose(Image.ROTATE_90)
+            im  = im.transpose(Image.ROTATE_270)
             im.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             return send_from_directory(app.config["UPLOAD_FOLDER"], filename=filename, as_attachment=True)
@@ -240,7 +240,7 @@ def leftrotate():
 
 
             im = Image.open(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            im  = im.transpose(Image.ROTATE_270)
+            im  = im.transpose(Image.ROTATE_90)
             im.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             return send_from_directory(app.config["UPLOAD_FOLDER"], filename=filename, as_attachment=True)
