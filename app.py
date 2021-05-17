@@ -199,6 +199,7 @@ def rightrotate():
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
+        print(request.files)
         file = request.files['file']
         if file.filename == '':
             flash('No selected file')
@@ -230,6 +231,7 @@ def leftrotate():
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
+        print(request.files)
         file = request.files['file']
         if file.filename == '':
             flash('No selected file')
